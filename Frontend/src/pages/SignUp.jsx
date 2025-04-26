@@ -19,7 +19,7 @@ const SignUpPage = () => {
     });
 
 
-    // const [loading, setLoading] = useState(false);
+
     const [showPass, setShowPass] = useState(false)
 
     const handleChange = (e) => {

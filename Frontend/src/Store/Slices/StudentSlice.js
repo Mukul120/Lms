@@ -82,7 +82,7 @@ const studentSlice = createSlice({
             })
             .addCase(enrolledCourses.fulfilled, (state, action) => {
                 state.isloading = false;
-                toast.success("done")
+                toast.success("Enrolled Successfully")
 
             })
             .addCase(enrolledCourses.rejected, (state, action) => {

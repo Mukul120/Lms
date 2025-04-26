@@ -2,6 +2,8 @@ import { Trash2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deletedCourse, getCourse } from '../../Store/Slices/AdminSlice';
+import { motion } from 'framer-motion';
+
 
 const TotalCourse = () => {
 
@@ -28,7 +30,11 @@ const TotalCourse = () => {
     };
 
     return (
-        <div className='w-full h-full p-5 space-y-7'>
+        <motion.div className='w-full h-full p-5 space-y-7'
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
             <h1 className='text-xl font-semibold text-purple-500'>Total Courses</h1>
 
             {/* Search Bar */}
@@ -64,7 +70,7 @@ const TotalCourse = () => {
                     <p className="text-center text-purple-700 mt-10">No courses found.</p>
                 )}
             </div>
-        </div>
+        </motion.div>
     );
 };
 

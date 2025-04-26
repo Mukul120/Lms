@@ -2,21 +2,11 @@ import { Trash2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { deleteusers, getEducator } from '../../Store/Slices/AdminSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { motion } from 'framer-motion';
+
 
 const TotalEducator = () => {
-    // Sample list with educator names and emails
-    // const [educators] = useState([
-    //     { name: 'Nirali Shah', email: 'nirali.shah@teachhub.com' },
-    //     { name: 'Rakesh Patel', email: 'rakesh.patel@eduverse.com' },
-    //     { name: 'Fahim Khan', email: 'fahim.khan@learnzone.com' },
-    //     { name: 'Kavita Joshi', email: 'kavita.joshi@mentorplus.com' },
-    //     { name: 'Amit Desai', email: 'amit.desai@brainbox.edu' },
-    //     { name: 'Sneha Kaur', email: 'sneha.kaur@teacheraid.com' },
-    //     { name: 'Harsh Rathod', email: 'harsh.rathod@smartclass.io' },
-    //     { name: 'Pooja Singh', email: 'pooja.singh@skillup.org' },
-    //     { name: 'Arjun Rawal', email: 'arjun.rawal@edconnect.net' },
-    //     { name: 'Jaya Mehta', email: 'jaya.mehta@brightfuture.com' }
-    // ]);
+
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getEducator());
@@ -35,7 +25,11 @@ const TotalEducator = () => {
     };
 
     return (
-        <div className='w-full h-full p-5 space-y-7'>
+        <motion.div className='w-full h-full p-5 space-y-7'
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
             <h1 className='text-xl font-semibold text-purple-500'>Total Educators</h1>
 
             {/* Search Bar */}
@@ -67,7 +61,7 @@ const TotalEducator = () => {
                     <p className="text-center text-purple-700 mt-10">No educators found.</p>
                 )}
             </div>
-        </div>
+        </motion.div>
     );
 };
 

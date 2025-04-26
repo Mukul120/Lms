@@ -2,6 +2,7 @@ import { Trash2 } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import { deleteusers, getStudent } from "../../Store/Slices/AdminSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { motion } from 'framer-motion';
 
 const TotalStudent = () => {
     const dispatch = useDispatch();
@@ -24,7 +25,11 @@ const TotalStudent = () => {
     };
 
     return (
-        <div className='w-full h-full p-5 space-y-7'>
+        <motion.div className='w-full h-full p-5 space-y-7'
+            initial={{ opacity: 0, y: 100 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+        >
             <h1 className='text-xl font-semibold text-purple-500'>Total Students</h1>
 
             <input
@@ -57,7 +62,7 @@ const TotalStudent = () => {
                     <p className="text-center text-purple-700 mt-10">No students found.</p>
                 )}
             </div>
-        </div>
+        </motion.div>
     );
 };
 

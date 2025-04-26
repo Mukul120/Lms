@@ -76,7 +76,7 @@ const CourseList = () => {
                                 <div className="h-1/3 p-1 flex flex-col bg-green-0 relative py-2">
                                     <h1 className="font-semibold text-xl ">{elm?.courseName}</h1>
                                     <h2 className="font-light text-sm">Creator: {elm.createdBy?.name}</h2>
-                                   
+
 
                                 </div>
                             </div>

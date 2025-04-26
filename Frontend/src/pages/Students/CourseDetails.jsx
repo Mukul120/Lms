@@ -7,7 +7,9 @@ import { updateCourseProgress } from '../../Store/Slices/StudentSlice';
 const CourseDetails = () => {
     const { id } = useParams();
     const nav = useNavigate();
+
     const { getEnrolledCourses } = useSelector(state => state.student);
+
     const [enrolledCourse, setEnrolledCourse] = useState(null);
     const [isEnrolled, setIsEnrolled] = useState(false);
     const videoRef = useRef(null);
@@ -18,7 +20,7 @@ const CourseDetails = () => {
     useEffect(() => {
         const enrolled = getEnrolledCourses.find(e => e.courseId._id === id);
         if (enrolled) {
-            setEnrolledCourse(enrolled); // store full enrolled object
+            setEnrolledCourse(enrolled); // store full enrolled object 
         }
     }, [id, getEnrolledCourses]);
 
@@ -73,7 +75,7 @@ const CourseDetails = () => {
         if (enrolledCourse?.courseId?.coursePdf) {
             const link = document.createElement("a");
             link.href = enrolledCourse.courseId.coursePdf;
-            link.download = "course.pdf"; // You can dynamically set the name too
+            link.download = "course.pdf";
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
