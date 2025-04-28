@@ -33,7 +33,7 @@ const LoginPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(login(formData));
-     
+
         setFormData({
 
             email: '',
@@ -41,7 +41,7 @@ const LoginPage = () => {
             role: 'student'
         })
 
-      
+
     };
 
     return (

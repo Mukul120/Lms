@@ -15,7 +15,7 @@ const AddCourse = () => {
 
     const [courseName, setCourseName] = useState("");
     const [description, setDescription] = useState("");
-    // const [price, setPrice] = useState("");
+
     const [imageFile, setImageFile] = useState(null);
     const [pdfFileData, setPdfFileData] = useState(null);
     const [videoFile, setVideoFile] = useState(null);
@@ -71,26 +71,23 @@ const AddCourse = () => {
             toast.error("Please enter the course description.");
             return;
         }
-        // if (!price || isNaN(price) || Number(price) <= 0) {
-        //     toast.error("Please enter a valid price greater than 0.");
-        //     return;
-        // }
+
         if (!imageFile) {
             toast.error("Please upload a course image.");
             return;
         }
 
-      
-            if (!videoFile) {
-                toast.error("Please upload a course video.");
-                return;
-            }
-        
-        // ✅ Proceed if all validations pass
+
+        if (!videoFile) {
+            toast.error("Please upload a course video.");
+            return;
+        }
+
+
         const formData = new FormData();
         formData.append("name", courseName);
         formData.append("description", description);
-        // formData.append("price", price);
+
         formData.append("image", imageFile);
         formData.append("pdf", pdfFileData);
         formData.append("video", videoFile);
@@ -101,18 +98,9 @@ const AddCourse = () => {
         }
 
         dispatch(addCourse(formData));
-        // if (isEditCourse) {
-        //     formData.append("courseId", isEditCourse._id); // Add course ID for updating
-        //     dispatch(updateCourse(isEditCourse._id, formData)); // Dispatch update action
-        // } else {
-        //     dispatch(addCourse(formData)); // Dispatch add action
-        // }
 
-
-        // ✅ Reset all fields
         setCourseName("");
         setDescription("");
-        // setPrice("");
         setImageFile(null);
         setPdfFileData(null);
         setVideoFile(null);
@@ -170,17 +158,7 @@ const AddCourse = () => {
                             ></textarea>
                         </div>
 
-                        {/* Course Price */}
-                        {/* <div className="flex items-center mt-10">
-                            <label className="w-40 text-start text-lg mt-1">Course Price:</label>
-                            <input
-                                type="number"
-                                min="0"
-                                className="w-30 outline-none border-2 rounded-2xl py-1 px-4 text-lg text-black"
-                                value={price}
-                                onChange={(e) => setPrice(e.target.value)}
-                            />
-                        </div> */}
+
 
                         {/* Course Image & PDF */}
                         <div className="flex items-center mt-11 w-[70vw] h-10">

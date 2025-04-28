@@ -13,7 +13,6 @@ import EducatorHome from './pages/Educator/Educator'
 import AdminHome from './pages/Admin/AdminHome'
 import { motion } from "framer-motion";
 import { Loader } from 'lucide-react'
-import UpatedCourse from './pages/Educator/UpatedCourse'
 import EnrolledCourse from './pages/Students/EnrolledCourse'
 import CourseDetails from './pages/Students/CourseDetails'
 

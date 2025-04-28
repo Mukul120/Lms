@@ -1,54 +1,26 @@
-// const { Readable } = require("stream");
 const cloudinary = require("../utils/cloudinary");
 const CourseModel = require("../Models/CourseModel");
 
-// const streamUpload = (fileBuffer, folder, resourceType = "auto") => {
-//     return new Promise((resolve, reject) => {
-//         const uploadStream = cloudinary.uploader.upload_stream(
-//             {
-//                 folder,
-//                 resource_type: resourceType,
-//                 chunk_size: 6000000, // 6MB
-//                 eager_async: true,
-//                 eager: resourceType === "video"
-//                     ? [{ format: "mp4", width: 720, crop: "scale" }]
-//                     : undefined,
-//                 quality: "auto:good"
-//             },
-//             (error, result) => {
-//                 if (error) {
-//                     console.error("Cloudinary stream upload error:", error);
-//                     reject(new Error("Error uploading file to Cloudinary"));
-//                 } else {
-//                     resolve(result.secure_url);
-//                 }
-//             }
-//         );
-
-//         Readable.from(fileBuffer).pipe(uploadStream);
-//     });
-// };
-
 
 const streamUpload = (buffer, folder, type) => {
-  return new Promise((resolve, reject) => {
-    const stream = cloudinary.uploader.upload_stream(
-      {
-        folder,
-        resource_type: type || "auto", // 'video' if it's video, 'image' for images, 'raw' for pdf
-        use_filename: true,
-        unique_filename: false,
-      },
-      (error, result) => {
-        if (result) {
-          resolve(result.secure_url);
-        } else {
-          reject(error);
-        }
-      }
-    );
-    stream.end(buffer);
-  });
+    return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+            {
+                folder,
+                resource_type: type || "auto", // 'video' if it's video, 'image' for images, 'raw' for pdf
+                use_filename: true,
+                unique_filename: false,
+            },
+            (error, result) => {
+                if (result) {
+                    resolve(result.secure_url);
+                } else {
+                    reject(error);
+                }
+            }
+        );
+        stream.end(buffer);
+    });
 };
 
 
@@ -67,7 +39,7 @@ module.exports.addCourse = async (req, res) => {
             streamUpload(video[0].buffer, "course/videos", "video")
         ];
 
-        // Optional PDF upload
+
         if (pdf) {
             uploads.push(streamUpload(pdf[0].buffer, "course/pdf", "raw"));
         }

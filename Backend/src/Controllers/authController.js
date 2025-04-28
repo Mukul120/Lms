@@ -67,7 +67,7 @@ module.exports.register = async (req, res) => {
 
         }
         else if (role === "Admin") {
-            user = await AdminModel.findOne({ email })
+            user = await AdminModel.findOne({ role })
             if (user) return res.status(400).json({ message: "Access Denied " });
             const admin = await AdminModel.create({
                 name,
