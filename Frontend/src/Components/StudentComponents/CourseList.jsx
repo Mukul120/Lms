@@ -67,9 +67,9 @@ const CourseList = () => {
                             <div
                                 onClick={() => setSelectedCourse(elm)}
                                 key={elm._id}
-                                className=" bg-purple-600 h-[70%] rounded-xl flex flex-col gap-3 overflow-hidden p-2 hover:scale-110 transition-transform duration-300 cursor-pointer "
+                                className=" bg-purple-600 h-[100%] rounded-xl flex flex-col gap-3 overflow-hidden p-2 hover:scale-110 transition-transform duration-300 cursor-pointer "
                             >
-                                <div className="h-2/3  rounded-2xl overflow-hidden">
+                                <div className="  rounded-2xl overflow-hidden">
                                     <img src={elm.courseImage} alt="" className="object-cover object-top w-full h-full" />
                                 </div>
 
