@@ -5,7 +5,9 @@ import toast from "react-hot-toast";
 
 export const getAuthUser = createAsyncThunk("auth/getAuthUser", async (_, thunkAPI) => {
   try {
-    const response = await axiosInstance.get("/auth/check");
+    const response = await axiosInstance.get("/auth/check",  {
+      withCredentials: true, 
+    });
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.response?.data?.message || "error in getAuthiuser");
