@@ -1,5 +1,4 @@
 
-
 const express = require("express");
 const http = require("http");
 const dotenv = require("dotenv");
@@ -36,7 +35,7 @@ app.use(express.json({ limit: "500mb" }));
 app.use(express.urlencoded({ limit: "500mb", extended: true }));
 app.use(cookieParser());
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://lms-frontend-e4jp.onrender.com",
   credentials: true
 }));
 

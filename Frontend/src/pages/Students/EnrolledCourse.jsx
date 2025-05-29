@@ -32,8 +32,8 @@ const EnrolledCourse = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}> <div className="p-4">
                 <h2 className="text-2xl font-bold mb-4">My Enrolled Courses</h2>
-                { getEnrolledCourses?.lenght===0 ? (
-                    <p>No courses enrolled yet.</p>
+                { getEnrolledCourses?.length===0 ? (
+                    <p >No courses enrolled yet.</p>
                 ) : (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         {getEnrolledCourses.map((enrollment, index) => (

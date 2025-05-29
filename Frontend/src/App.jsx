@@ -53,7 +53,7 @@ const App = () => {
     <>
       <div><Toaster /></div>
 
-      <div className="h-[92vh] w-screen">
+      <div className="h-[92vh] w-screen ">
         {/* <Navbar />  */}
         {authuser && (
           <motion.div
