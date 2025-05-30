@@ -164,7 +164,14 @@ module.exports.login = async (req, res) => {
 }
 
 module.exports.logout = async (req, res) => {
-    res.cookie("jwt", "", { maxAge: 0 })
+    // res.Clearcookie(jwt,
+    //     { maxAge: 0 })
+    res.clearCookie("jwt", {
+        httpOnly: true,
+        secure: true,       // if you're using HTTPS (which you should in production)
+        sameSite: "None",
+        maxAge: 0    // or "Lax" if not cross-site
+    });
     res.status(200).json({ message: "Logged out successfully" });
 }
 
